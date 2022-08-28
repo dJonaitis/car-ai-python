@@ -1,4 +1,4 @@
-# car-ai-python-
+# NEAT Car AI in Python
 Race cars that learn to drive around a course in Python, made using the NEAT-Python library. The cars procedurally learn over time to be better and better using the neuroevolution of augmenting topologies (NEAT) algorithm. All art is done by me.
 
 ## Usage
