@@ -15,11 +15,17 @@ Any track that works on the basic premise of being completely surrounded by a si
 To change the color, simply change the RGB values in the ``grassColor`` variable at the top of ``main.py``.  
   
 The only requirements for a track is that the road upon which the cars drive is surrounded by ``grassColor`` and it loops.
+  
+Additionally, ensure the name is ``track.png`` and it is in the assets folder. 
 
 ## Changing the amount of cars
 To increase/decrease the amount of cars in each generation, you must do the following:  
 1. Change ``startingCars`` in ``main.py`` to the desired amount
 2. Change ``pop_size`` in ``config.txt`` to the desired amount
+
+## Uploading other cars
+To add custom cars, simply add extra images titled ``car6.png``  to the assets folder, where the 6 is the index of the car. 5 cars are already in the repository, so the next one should be six. Ensure that the dimensions of the car are 786x445 pixels. The cars you just added should appear as a variation in the simulation. 
+  
 
 Increasing the amount of cars will have noticeable effects on performance depending on your system. If you have a lower end system and are experiencing performance issues, consider lowering the amount of cars.
 
