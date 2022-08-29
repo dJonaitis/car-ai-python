@@ -1,6 +1,7 @@
 import os
 import sys
 import math
+import random
 
 import neat
 import pygame
@@ -9,7 +10,8 @@ pygame.init()
 clock = pygame.time.Clock()
 
 grassColor = pygame.Color(46, 114, 46) # color for grass
-startingCars = 20
+startingCars = 20 # the amount of cars in the start of the game, ensure that this value is the same as pop_size in config.txt
+carVarCount = 5 # the amount of car variations
 
 width, height = 1244, 1016
 window = pygame.display.set_mode((width, height))
@@ -23,9 +25,10 @@ toggleSprites = [toggleOn, toggleOff]
 fontObj = pygame.font.Font('assets/8bit.ttf', 30)
 
 class Car(pygame.sprite.Sprite):
-    def __init__(self):
+    def __init__(self, spriteIndex):
         super().__init__()
-        self.originalSprite = pygame.image.load(os.path.join("assets", "car.png"))
+        self.spriteIndex = spriteIndex
+        self.originalSprite = pygame.image.load(os.path.join("assets", f"car{self.spriteIndex}.png"))
         self.image = self.originalSprite
         self.rect = self.image.get_rect(center=(490, 820))
 
@@ -115,7 +118,8 @@ def evaluateGenomes(genomes, config):
     genCount += 1
 
     for genome_id, ge in genomes:
-        cars.append(pygame.sprite.GroupSingle(Car()))
+        carIndex = random.randrange(1, carVarCount+1, 1)
+        cars.append(pygame.sprite.GroupSingle(Car(carIndex)))
         genome.append(ge)
         network = neat.nn.FeedForwardNetwork.create(ge, config)
         networks.append(network)
